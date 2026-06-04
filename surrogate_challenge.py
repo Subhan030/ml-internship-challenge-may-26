@@ -88,7 +88,7 @@ def fit_surrogate(train_df, feature_names, teacher):
     print(f"Top forest drivers: {[str(f) for f in ranked[-3:][::-1]]}")
 
     # Regression target for the surrogate.
-    target = sample["target"].values
+    target = teacher.predict(sample[feature_names].values)
 
     param_grid = {
         "n_estimators": [300, 600],
